@@ -127,8 +127,12 @@ for off in data.get("offers", []):
 
     metadata = {
         "record_type": "offer",
+        "name": off.get("name", ""),
+        "description": off.get("description", ""),
         "type": off.get("type", ""),
-        "min_amount": off.get("minimum_transaction_amount", ""),
+        "applicable_categories": ", ".join(off.get("applicable_categories", [])),
+        "minimum_transaction_amount": off.get("minimum_transaction_amount", 0),
+        "discount_value": json.dumps(off.get("discount_value", {}))
     }
 
     all_ids.append(rec_id)
@@ -161,8 +165,12 @@ for strat in data.get("investment_strategies", []):
 
     metadata = {
         "record_type": "investment_strategy",
+        "name": strat.get("name", ""),
         "risk_profile": strat.get("risk_profile", ""),
         "time_horizon": strat.get("time_horizon", ""),
+        "target_annual_return": strat.get("target_annual_return", 0),
+        "allocation_blueprint": json.dumps(strat.get("allocation_blueprint", {})),
+        "performance_metrics": json.dumps(strat.get("performance_metrics", {}))
     }
 
     all_ids.append(rec_id)

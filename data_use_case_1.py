@@ -48,20 +48,68 @@ def generate_transaction():
         "prerequisites": []
     }
 
+# Predefined offer templates
+OFFER_TEMPLATES = [
+    {
+        "name": "Super Saver Offer",
+        "description": "Get {discount}% cashback on {category} with a minimum spend of ₹{min_amount} at {merchant}.",
+        "type": "cashback",
+        "categories": ["dining", "electronics"],
+        "min_amount_range": (500, 2000),
+        "discount_range": (5, 20),
+        "merchants": ["Zomato", "Flipkart", "Amazon", "Swiggy"]
+    },
+    {
+        "name": "Weekend Special",
+        "description": "Enjoy {discount}% off on {category} purchases this weekend at {merchant}.",
+        "type": "discount",
+        "categories": ["dining", "groceries"],
+        "min_amount_range": (300, 1000),
+        "discount_range": (10, 30),
+        "merchants": ["Swiggy", "BigBasket", "Grofers"]
+    },
+    {
+        "name": "First Purchase Bonus",
+        "description": "Get {discount}% extra cashback on your first {category} purchase at {merchant}.",
+        "type": "cashback",
+        "categories": ["electronics", "travel"],
+        "min_amount_range": (1000, 5000),
+        "discount_range": (15, 25),
+        "merchants": ["Amazon", "Flipkart", "MakeMyTrip"]
+    }
+]
+
 def generate_offer():
+    template = random.choice(OFFER_TEMPLATES)
+    min_amount = random.randint(*template["min_amount_range"])
+    discount = random.randint(*template["discount_range"])
+    category = random.choice(template["categories"])
+    merchant = random.choice(template["merchants"])
+    
     return {
         "offer_id": str(uuid.uuid4()),
-        "name": "Super Saver Offer",
-        "description": "Get 10% cashback on dining with a minimum spend of ₹1000 at Zomato and Flipkart.",
-        "type": random.choice(["cashback", "discount", "reward points"]),
-        "applicable_categories": ["dining", "electronics"],
-        "minimum_transaction_amount": 1000,
-        "discount_value": {"type": "percent", "value": 10},
-        "validity_period": {"start_date": now(), "end_date": future(30)},
-        "partner_merchants": ["Zomato", "Flipkart"],
+        "name": template["name"],
+        "description": template["description"].format(
+            discount=discount,
+            category=category,
+            min_amount=min_amount,
+            merchant=merchant
+        ),
+        "type": template["type"],
+        "applicable_categories": [category],
+        "minimum_transaction_amount": min_amount,
+        "discount_value": {
+            "type": "percent",
+            "value": discount
+        },
+        "validity_period": {
+            "start_date": now(),
+            "end_date": future(30)
+        },
+        "partner_merchants": [merchant],
         "targeting_rules": {
-            "user_spending_threshold": 3000,
-            "preferred_categories": ["dining"],
+            "user_spending_threshold": min_amount * 2,
+            "preferred_categories": [category],
             "risk_profile": "low"
         },
         "redemption": {
@@ -76,21 +124,57 @@ def generate_offer():
         "prerequisites": []
     }
 
+# Predefined asset templates
+ASSET_TEMPLATES = [
+    {
+        "name": "HDFC Balanced Advantage Fund",
+        "type": "mutual fund",
+        "issuer": "HDFC",
+        "risk_rating_range": (3, 5),
+        "return_range": (8, 12),
+        "liquidity": "medium",
+        "min_investment_range": (5000, 10000)
+    },
+    {
+        "name": "ICICI Prudential Technology Fund",
+        "type": "mutual fund",
+        "issuer": "ICICI",
+        "risk_rating_range": (4, 5),
+        "return_range": (12, 18),
+        "liquidity": "medium",
+        "min_investment_range": (5000, 15000)
+    },
+    {
+        "name": "SBI Fixed Deposit",
+        "type": "FD",
+        "issuer": "SBI",
+        "risk_rating_range": (1, 2),
+        "return_range": (5, 7),
+        "liquidity": "low",
+        "min_investment_range": (10000, 50000)
+    }
+]
+
 def generate_financial_asset():
+    template = random.choice(ASSET_TEMPLATES)
+    risk_rating = random.randint(*template["risk_rating_range"])
+    expected_return = round(random.uniform(*template["return_range"]), 2)
+    min_investment = random.randint(*template["min_investment_range"])
+    
     return {
         "asset_id": str(uuid.uuid4()),
-        "type": random.choice(["mutual fund", "FD", "crypto", "bond"]),
-        "name": "HDFC Balanced Advantage Fund",
-        "issuer": "HDFC",
-        "risk_rating": random.randint(1, 5),
-        "expected_return": round(random.uniform(5.0, 15.0), 2),
-        "liquidity": random.choice(["high", "medium", "low"]),
-        "minimum_investment_amount": 5000,
+        "type": template["type"],
+        "name": template["name"],
+        "issuer": template["issuer"],
+        "risk_rating": risk_rating,
+        "expected_return": expected_return,
+        "liquidity": template["liquidity"],
+        "minimum_investment_amount": min_investment,
         "tenure": "5 years",
         "financial_details": {
             "historical_performance": {
-                "2022": "12.3%",
-                "2023": "10.5%"
+                "2022": f"{round(expected_return - 2, 1)}%",
+                "2023": f"{round(expected_return - 1, 1)}%"
             },
             "tax_implications": {
                 "short_term": "15%",
@@ -102,7 +186,7 @@ def generate_financial_asset():
             "regulatory_documents": ["https://example.com/prospectus.pdf"],
             "tags": ["ESG", "high-growth"]
         },
-        "keywords": ["investment", "mutual fund", "HDFC"],
+        "keywords": ["investment", template["type"], template["issuer"]],
         "created_at": now(),
         "updated_at": now(),
         "expiry_date": "",
@@ -110,36 +194,72 @@ def generate_financial_asset():
         "prerequisites": ["Demat account"]
     }
 
-def generate_investment_strategy():
-    return {
-        "strategy_id": str(uuid.uuid4()),
+# Predefined strategy templates
+STRATEGY_TEMPLATES = [
+    {
         "name": "Conservative Retirement Plan",
         "risk_profile": "conservative",
         "time_horizon": "long-term",
-        "target_annual_return": 8.0,
-        "allocation_blueprint": {
+        "target_return_range": (7, 9),
+        "allocation": {
             "FD": 40,
             "mutual_funds": 40,
             "bonds": 20
-        },
+        }
+    },
+    {
+        "name": "Aggressive Growth Strategy",
+        "risk_profile": "aggressive",
+        "time_horizon": "medium-term",
+        "target_return_range": (12, 15),
+        "allocation": {
+            "equities": 60,
+            "mutual_funds": 30,
+            "crypto": 10
+        }
+    },
+    {
+        "name": "Balanced Income Portfolio",
+        "risk_profile": "moderate",
+        "time_horizon": "medium-term",
+        "target_return_range": (9, 11),
+        "allocation": {
+            "mutual_funds": 50,
+            "FD": 30,
+            "equities": 20
+        }
+    }
+]
+
+def generate_investment_strategy():
+    template = random.choice(STRATEGY_TEMPLATES)
+    target_return = round(random.uniform(*template["target_return_range"]), 1)
+    
+    return {
+        "strategy_id": str(uuid.uuid4()),
+        "name": template["name"],
+        "risk_profile": template["risk_profile"],
+        "time_horizon": template["time_horizon"],
+        "target_annual_return": target_return,
+        "allocation_blueprint": template["allocation"],
         "performance_metrics": {
-            "backtested_results": "7.8% CAGR over 10 years",
-            "volatility_score": 1.9,
+            "backtested_results": f"{round(target_return - 0.2, 1)}% CAGR over 10 years",
+            "volatility_score": round(random.uniform(1.5, 2.5), 1),
             "tax_efficiency_rating": "high"
         },
         "user_requirements": {
             "minimum_capital": 100000,
             "recommended_account_types": ["Demat", "Savings"]
         },
-        "keywords": ["retirement", "low-risk", "strategy"],
+        "keywords": ["investment", template["risk_profile"], "strategy"],
         "created_at": now(),
         "updated_at": now(),
         "expiry_date": "",
-        "compatible_user_profiles": ["retirees", "risk_averse"],
+        "compatible_user_profiles": ["investors", "retirees"],
         "prerequisites": ["KYC", "Demat account"]
     }
 
-
+# Generate mock data with more variety
 mock_data = {
     "transactions": [generate_transaction() for _ in range(5)],
     "offers": [generate_offer() for _ in range(3)],
@@ -150,4 +270,4 @@ mock_data = {
 with open("mock_financial_data.json", "w") as f:
     json.dump(mock_data, f, indent=2)
 
-print("confirm")
+print("Mock data generated successfully!")

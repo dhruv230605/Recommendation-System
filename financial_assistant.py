@@ -14,10 +14,7 @@ load_dotenv()
 
 class TransactionAssistant:
     def __init__(self):
-        """
-        Initialize the Transaction Assistant with necessary components.
-        """
-        # Get Azure OpenAI credentials from environment variables
+        
         openai_api_key = os.getenv("OPENAI_API_KEY")
         openai_api_base = os.getenv("OPENAI_DEPLOYMENT_ENDPOINT")
         deployment_name = os.getenv("OPENAI_DEPLOYMENT_NAME", "gpt-4o-mini")
@@ -25,14 +22,14 @@ class TransactionAssistant:
         if not all([openai_api_key, openai_api_base]):
             raise ValueError("OPENAI_API_KEY and OPENAI_DEPLOYMENT_ENDPOINT environment variables must be set")
             
-        # Store credentials
+        # storing
         self.openai_api_key = openai_api_key
         self.openai_api_base = openai_api_base.rstrip('/') 
         
-        # Initialize the embedding model
+        #embedding model
         self.embeddings = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
         
-        # Connect to the existing ChromaDB vector store
+        # existing vdb from chroma
         self.vectorstore = Chroma(
             persist_directory="./chroma_db",
             embedding_function=self.embeddings,
@@ -40,7 +37,7 @@ class TransactionAssistant:
         )
         
         try:
-            # Initialize the Azure OpenAI chat model
+            # Initialize model
             self.llm = AzureChatOpenAI(
                 openai_api_version="2023-05-15",
                 azure_deployment=deployment_name,
@@ -49,7 +46,7 @@ class TransactionAssistant:
                 temperature=0.7 
             )
         except Exception as e:
-            raise ValueError(f"Failed to initialize Azure OpenAI model. Please check your credentials. Error: {str(e)}")
+            raise ValueError(f"Failed, Error: {str(e)}")
         
         # Initialize conversation memory to maintain chat history
         self.memory = ConversationBufferMemory(
@@ -66,12 +63,10 @@ class TransactionAssistant:
         )
 
     def _get_qa_prompt(self) -> PromptTemplate:
-        """
-        Create a custom prompt template for the QA chain.
-        This template guides how the model should respond to questions.
-        """
         template = """You are a helpful financial assistant specializing in transaction analysis. 
         Use the following pieces of context to answer the question at the end.
+        get_transaction_recommendations is a function that takes a user_id as input and returns a list of offers and strategies. Only use this function if the user asks for recommendations.
+        Only consider transactions that belong to the user ID mentioned in the question.
         If you don't know the answer, just say that you don't know, don't try to make up an answer.
 
         Context: {context}
@@ -86,70 +81,132 @@ class TransactionAssistant:
         )
 
     def get_transaction_recommendations(self, user_id: str) -> Dict[str, List[Dict[str, Any]]]:
-        """
-        Get personalized offers and strategies based on user's transaction history.
         
-        Args:
-            user_id (str): The ID of the user to get recommendations for
-            
-        Returns:
-            Dict containing offers and strategies based on user's transaction patterns
-        """
-        # Step 1: Get user's recent transactions
         user_transactions = self.vectorstore.similarity_search(
             f"user_id: {user_id}",
-            k=5,  # Get 5 most recent transactions
+            k=5, 
             filter={"record_type": "transaction"}
         )
         
-        # Step 2: Extract categories from transactions
         categories = [doc.metadata.get("category", "") for doc in user_transactions]
         
-        # Step 3: Find relevant offers based on transaction categories
+        
         offers = self.vectorstore.similarity_search(
             f"categories: {', '.join(categories)}",
-            k=3,  # Get top 3 matching offers
+            k=3, 
             filter={"record_type": "offer"}
         )
         
-        # Step 4: Get investment strategies based on spending patterns
+        
         strategies = self.vectorstore.similarity_search(
             f"spending patterns: {', '.join(categories)}",
-            k=2,  # Get top 2 matching strategies
+            k=2, 
             filter={"record_type": "investment_strategy"}
         )
         
+        
+        offer_details = []
+        for doc in offers:
+            metadata = doc.metadata
+            try:
+                discount_value = json.loads(metadata.get("discount_value", "{}"))
+            except:
+                discount_value = {}
+                
+            offer_data = {
+                "name": metadata.get("name", "Unnamed Offer"),
+                "description": metadata.get("description", "No description available"),
+                "type": metadata.get("type", "Unknown type"),
+                "discount_value": discount_value,
+                "applicable_categories": metadata.get("applicable_categories", "").split(", "),
+                "minimum_transaction_amount": metadata.get("minimum_transaction_amount", 0)
+            }
+            offer_details.append(offer_data)
+        
+        
+        strategy_details = []
+        for doc in strategies:
+            metadata = doc.metadata
+            try:
+                allocation_blueprint = json.loads(metadata.get("allocation_blueprint", "{}"))
+                performance_metrics = json.loads(metadata.get("performance_metrics", "{}"))
+            except:
+                allocation_blueprint = {}
+                performance_metrics = {}
+                
+            strategy_data = {
+                "name": metadata.get("name", "Unnamed Strategy"),
+                "risk_profile": metadata.get("risk_profile", "Not specified"),
+                "time_horizon": metadata.get("time_horizon", "Not specified"),
+                "target_annual_return": metadata.get("target_annual_return", 0),
+                "allocation_blueprint": allocation_blueprint,
+                "performance_metrics": performance_metrics
+            }
+            strategy_details.append(strategy_data)
+        
         return {
-            "offers": [doc.metadata for doc in offers],
-            "strategies": [doc.metadata for doc in strategies]
+            "offers": offer_details,
+            "strategies": strategy_details
         }
 
     def chat(self, question: str) -> str:
-        """
-        Handle transaction-related queries using the conversational chain.
         
-        Args:
-            question (str): The user's question about transactions
-            
-        Returns:
-            str: The assistant's response
-        """
+        user_id = None
+        if "user id is" in question.lower():
+            user_id = question.lower().split("user id is")[1].split()[0].strip()
+        
+        
+        recommendations = None
+        if "recommendations" in question.lower() and user_id:
+            recommendations = self.get_transaction_recommendations(user_id)
+        
+        
         response = self.qa_chain({"question": question})
-        return response["answer"]
+        answer = response["answer"]
+        
+        
+        if recommendations:
+            answer += "\n\nPersonalized Recommendations:\n"
+            
+            if recommendations["offers"]:
+                answer += "\nOffers for you:\n"
+                for offer in recommendations["offers"]:
+                    answer += f"- {offer['name']}: {offer['description']}\n"
+                    answer += f"  Type: {offer['type']}, "
+                    if offer['discount_value']:
+                        discount = offer['discount_value']
+                        answer += f"Discount: {discount.get('value', '')}{discount.get('type', '')}, "
+                    answer += f"Min. Amount: ₹{offer['minimum_transaction_amount']}\n"
+            
+            if recommendations["strategies"]:
+                answer += "\nInvestment Strategies:\n"
+                for strategy in recommendations["strategies"]:
+                    answer += f"- {strategy['name']}\n"
+                    answer += f"  Risk Profile: {strategy['risk_profile']}, "
+                    answer += f"Time Horizon: {strategy['time_horizon']}, "
+                    answer += f"Target Return: {strategy['target_annual_return']}%\n"
+                    if strategy['allocation_blueprint']:
+                        answer += "  Allocation: "
+                        allocations = [f"{k}: {v}%" for k, v in strategy['allocation_blueprint'].items()]
+                        answer += ", ".join(allocations) + "\n"
+        
+        return answer
 
-# Example
+
 if __name__ == "__main__":
     try:
         
         assistant = TransactionAssistant()
         
        
-        # user_id = "40f2a9c5-ca1d-4269-99cc-a2e9774d490b"
-        # transaction_recs = assistant.get_transaction_recommendations(user_id)
-        # print("Transaction Recommendations:", transaction_recs)
+        user_id = "40f2a9c5-ca1d-4269-99cc-a2e9774d490b"
+        transaction_recs = assistant.get_transaction_recommendations(user_id)
+        print("Transaction Recommendations:", transaction_recs)
         
         
-        response = assistant.chat("What is my largest value transaction?")
+        response = assistant.chat('''What categories am I buying from? My user id is 40f2a9c5-ca1d-4269-99cc-a2e9774d490b. 
+                                  Suggest me recommendations for my transaction history.
+                                  Also have I made any other transactions?''')
         print("Chat Response:", response)
     except ValueError as e:
         print(f"Error: {str(e)}")

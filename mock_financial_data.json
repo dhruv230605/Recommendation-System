@@ -1,20 +1,131 @@
 {
   "transactions": [
     {
-      "transaction_id": "f2fd2923-c316-4893-aba5-34393db293a5",
-      "user_id": "40f2a9c5-ca1d-4269-99cc-a2e9774d490b",
-      "timestamp": "2025-06-02T14:52:45.249362",
-      "amount": 8589.81,
+      "transaction_id": "1f3f6077-5bd2-4bb4-b979-5651e74dc658",
+      "user_id": "a13d903e-8433-4f1d-b4fc-1b87cdd2a983",
+      "timestamp": "2025-06-04T13:26:00.629253",
+      "amount": 6270.88,
       "currency": "INR",
-      "category": "electronics",
+      "category": "dining",
       "merchant_name": "Flipkart",
-      "payment_method": "UPI",
+      "payment_method": "debit card",
       "location": {
         "geocoordinates": [
-          5.974709,
-          76.69889
+          86.413628,
+          -63.7359
         ],
-        "city": "Chennai",
+        "city": "Mumbai",
+        "country": "India"
+      },
+      "tags": [
+        "travel",
+        "recurring",
+        "gift"
+      ],
+      "recurrence": {
+        "is_recurring": true,
+        "frequency": "yearly"
+      },
+      "metadata": {
+        "invoice_details": "INV-1434",
+        "itemized_breakdown": [
+          {
+            "product": "Item A",
+            "quantity": 1,
+            "price": 499.0
+          },
+          {
+            "product": "Item B",
+            "quantity": 2,
+            "price": 250.0
+          }
+        ],
+        "loyalty_points_earned": 11
+      },
+      "keywords": [
+        "transaction",
+        "finance",
+        "payment"
+      ],
+      "created_at": "2025-06-04T13:26:00.629294",
+      "updated_at": "2025-06-04T13:26:00.629295",
+      "expiry_date": "",
+      "compatible_user_profiles": [
+        "frequent_shopper",
+        "tech_savvy"
+      ],
+      "prerequisites": []
+    },
+    {
+      "transaction_id": "4fac82f9-b731-420d-9e90-e612b4107df5",
+      "user_id": "13005cb7-5724-4701-82a9-50daad8d5451",
+      "timestamp": "2025-06-04T13:26:00.629307",
+      "amount": 2687.73,
+      "currency": "INR",
+      "category": "electronics",
+      "merchant_name": "Amazon",
+      "payment_method": "credit card",
+      "location": {
+        "geocoordinates": [
+          -14.772775,
+          166.234747
+        ],
+        "city": "Hyderabad",
+        "country": "India"
+      },
+      "tags": [
+        "personal",
+        "recurring"
+      ],
+      "recurrence": {
+        "is_recurring": true,
+        "frequency": ""
+      },
+      "metadata": {
+        "invoice_details": "INV-7927",
+        "itemized_breakdown": [
+          {
+            "product": "Item A",
+            "quantity": 1,
+            "price": 499.0
+          },
+          {
+            "product": "Item B",
+            "quantity": 2,
+            "price": 250.0
+          }
+        ],
+        "loyalty_points_earned": 50
+      },
+      "keywords": [
+        "transaction",
+        "finance",
+        "payment"
+      ],
+      "created_at": "2025-06-04T13:26:00.629319",
+      "updated_at": "2025-06-04T13:26:00.629320",
+      "expiry_date": "",
+      "compatible_user_profiles": [
+        "frequent_shopper",
+        "tech_savvy"
+      ],
+      "prerequisites": []
+    },
+    {
+      "transaction_id": "8b8cc7b6-739f-49a1-8b78-7d286386cdb5",
+      "user_id": "ea7b59a5-de87-4c2f-b676-04d1ae7e5982",
+      "timestamp": "2025-06-04T13:26:00.629327",
+      "amount": 2565.12,
+      "currency": "INR",
+      "category": "travel",
+      "merchant_name": "IRCTC",
+      "payment_method": "debit card",
+      "location": {
+        "geocoordinates": [
+          -53.716882,
+          -133.787265
+        ],
+        "city": "Delhi",
         "country": "India"
       },
       "tags": [
@@ -23,65 +134,10 @@
       ],
       "recurrence": {
         "is_recurring": true,
-        "frequency": ""
-      },
-      "metadata": {
-        "invoice_details": "INV-6094",
-        "itemized_breakdown": [
-          {
-            "product": "Item A",
-            "quantity": 1,
-            "price": 499.0
-          },
-          {
-            "product": "Item B",
-            "quantity": 2,
-            "price": 250.0
-          }
-        ],
-        "loyalty_points_earned": 18
-      },
-      "keywords": [
-        "transaction",
-        "finance",
-        "payment"
-      ],
-      "created_at": "2025-06-02T14:52:45.249440",
-      "updated_at": "2025-06-02T14:52:45.249442",
-      "expiry_date": "",
-      "compatible_user_profiles": [
-        "frequent_shopper",
-        "tech_savvy"
-      ],
-      "prerequisites": []
-    },
-    {
-      "transaction_id": "d91f6024-412d-41fe-a287-aa200bcac492",
-      "user_id": "5bda7702-8843-4cc7-89b9-0ab00a7ddd69",
-      "timestamp": "2025-06-02T14:52:45.249452",
-      "amount": 4168.64,
-      "currency": "INR",
-      "category": "electronics",
-      "merchant_name": "Swiggy",
-      "payment_method": "credit card",
-      "location": {
-        "geocoordinates": [
-          -36.604767,
-          -87.903608
-        ],
-        "city": "Hyderabad",
-        "country": "India"
-      },
-      "tags": [
-        "travel",
-        "recurring"
-      ],
-      "recurrence": {
-        "is_recurring": true,
         "frequency": "weekly"
       },
       "metadata": {
-        "invoice_details": "INV-7907",
+        "invoice_details": "INV-2032",
         "itemized_breakdown": [
           {
             "product": "Item A",
@@ -94,15 +150,15 @@
             "price": 250.0
           }
         ],
-        "loyalty_points_earned": 60
+        "loyalty_points_earned": 69
       },
       "keywords": [
         "transaction",
         "finance",
         "payment"
       ],
-      "created_at": "2025-06-02T14:52:45.249461",
-      "updated_at": "2025-06-02T14:52:45.249462",
+      "created_at": "2025-06-04T13:26:00.629343",
+      "updated_at": "2025-06-04T13:26:00.629344",
       "expiry_date": "",
       "compatible_user_profiles": [
         "frequent_shopper",
@@ -111,142 +167,31 @@
       "prerequisites": []
     },
     {
-      "transaction_id": "7a3ff7ce-9fd5-43ec-9cc1-ca8aca9aa772",
-      "user_id": "3419c1af-143a-4288-8e45-4cc46c00aa00",
-      "timestamp": "2025-06-02T14:52:45.249468",
-      "amount": 8782.75,
+      "transaction_id": "542f483b-514d-4939-b39e-a16a565195e6",
+      "user_id": "032fcaee-e288-4979-baa9-e7033db6c1bb",
+      "timestamp": "2025-06-04T13:26:00.629352",
+      "amount": 9526.78,
       "currency": "INR",
-      "category": "groceries",
-      "merchant_name": "Flipkart",
+      "category": "dining",
+      "merchant_name": "IRCTC",
       "payment_method": "credit card",
       "location": {
         "geocoordinates": [
-          43.002208,
-          -62.66781
-        ],
-        "city": "Chennai",
-        "country": "India"
-      },
-      "tags": [
-        "travel",
-        "gift"
-      ],
-      "recurrence": {
-        "is_recurring": true,
-        "frequency": "weekly"
-      },
-      "metadata": {
-        "invoice_details": "INV-4900",
-        "itemized_breakdown": [
-          {
-            "product": "Item A",
-            "quantity": 1,
-            "price": 499.0
-          },
-          {
-            "product": "Item B",
-            "quantity": 2,
-            "price": 250.0
-          }
-        ],
-        "loyalty_points_earned": 48
-      },
-      "keywords": [
-        "transaction",
-        "finance",
-        "payment"
-      ],
-      "created_at": "2025-06-02T14:52:45.249480",
-      "updated_at": "2025-06-02T14:52:45.249481",
-      "expiry_date": "",
-      "compatible_user_profiles": [
-        "frequent_shopper",
-        "tech_savvy"
-      ],
-      "prerequisites": []
-    },
-    {
-      "transaction_id": "e0161fb1-91dd-48f7-bb84-c94ef86a469e",
-      "user_id": "b7f68251-e04a-4538-891f-5c12c36976f6",
-      "timestamp": "2025-06-02T14:52:45.249486",
-      "amount": 467.06,
-      "currency": "INR",
-      "category": "groceries",
-      "merchant_name": "Uber",
-      "payment_method": "UPI",
-      "location": {
-        "geocoordinates": [
-          -84.418651,
-          81.681948
+          -23.909261,
+          -78.087553
         ],
         "city": "Mumbai",
         "country": "India"
       },
       "tags": [
-        "gift",
-        "recurring",
-        "business"
-      ],
-      "recurrence": {
-        "is_recurring": true,
-        "frequency": "yearly"
-      },
-      "metadata": {
-        "invoice_details": "INV-2650",
-        "itemized_breakdown": [
-          {
-            "product": "Item A",
-            "quantity": 1,
-            "price": 499.0
-          },
-          {
-            "product": "Item B",
-            "quantity": 2,
-            "price": 250.0
-          }
-        ],
-        "loyalty_points_earned": 35
-      },
-      "keywords": [
-        "transaction",
-        "finance",
-        "payment"
-      ],
-      "created_at": "2025-06-02T14:52:45.249494",
-      "updated_at": "2025-06-02T14:52:45.249495",
-      "expiry_date": "",
-      "compatible_user_profiles": [
-        "frequent_shopper",
-        "tech_savvy"
-      ],
-      "prerequisites": []
-    },
-    {
-      "transaction_id": "6ad12d09-9154-456f-a370-4091f3bb3525",
-      "user_id": "8901487e-7f76-4088-8475-533262bfe94c",
-      "timestamp": "2025-06-02T14:52:45.249499",
-      "amount": 6338.73,
-      "currency": "INR",
-      "category": "travel",
-      "merchant_name": "Uber",
-      "payment_method": "UPI",
-      "location": {
-        "geocoordinates": [
-          81.276843,
-          -165.423051
-        ],
-        "city": "Chennai",
-        "country": "India"
-      },
-      "tags": [
-        "business"
+        "travel"
       ],
       "recurrence": {
         "is_recurring": false,
         "frequency": ""
       },
       "metadata": {
-        "invoice_details": "INV-8905",
+        "invoice_details": "INV-8682",
         "itemized_breakdown": [
           {
             "product": "Item A",
@@ -259,15 +204,69 @@
             "price": 250.0
           }
         ],
-        "loyalty_points_earned": 42
+        "loyalty_points_earned": 64
       },
       "keywords": [
         "transaction",
         "finance",
         "payment"
       ],
-      "created_at": "2025-06-02T14:52:45.249506",
-      "updated_at": "2025-06-02T14:52:45.249506",
+      "created_at": "2025-06-04T13:26:00.629362",
+      "updated_at": "2025-06-04T13:26:00.629363",
+      "expiry_date": "",
+      "compatible_user_profiles": [
+        "frequent_shopper",
+        "tech_savvy"
+      ],
+      "prerequisites": []
+    },
+    {
+      "transaction_id": "d02965d9-be75-46b9-87ce-ddbb176b706a",
+      "user_id": "8df3b35e-3c34-4294-9a93-de92d444833e",
+      "timestamp": "2025-06-04T13:26:00.629369",
+      "amount": 3920.95,
+      "currency": "INR",
+      "category": "travel",
+      "merchant_name": "Uber",
+      "payment_method": "UPI",
+      "location": {
+        "geocoordinates": [
+          -76.60155,
+          37.15296
+        ],
+        "city": "Mumbai",
+        "country": "India"
+      },
+      "tags": [
+        "recurring"
+      ],
+      "recurrence": {
+        "is_recurring": false,
+        "frequency": "yearly"
+      },
+      "metadata": {
+        "invoice_details": "INV-9399",
+        "itemized_breakdown": [
+          {
+            "product": "Item A",
+            "quantity": 1,
+            "price": 499.0
+          },
+          {
+            "product": "Item B",
+            "quantity": 2,
+            "price": 250.0
+          }
+        ],
+        "loyalty_points_earned": 81
+      },
+      "keywords": [
+        "transaction",
+        "finance",
+        "payment"
+      ],
+      "created_at": "2025-06-04T13:26:00.629378",
+      "updated_at": "2025-06-04T13:26:00.629379",
       "expiry_date": "",
       "compatible_user_profiles": [
         "frequent_shopper",
@@ -278,29 +277,27 @@
   ],
   "offers": [
     {
-      "offer_id": "8ca78080-e834-4047-b0a7-cc56ce449d6e",
+      "offer_id": "67b207dd-4329-481d-a04e-12d569a79b0b",
       "name": "Super Saver Offer",
-      "description": "Get 10% cashback on dining with a minimum spend of \u20b91000 at Zomato and Flipkart.",
+      "description": "Get 12% cashback on dining with a minimum spend of \u20b9585 at Amazon.",
       "type": "cashback",
       "applicable_categories": [
-        "dining",
-        "electronics"
+        "dining"
       ],
-      "minimum_transaction_amount": 1000,
+      "minimum_transaction_amount": 585,
       "discount_value": {
         "type": "percent",
-        "value": 10
+        "value": 12
       },
       "validity_period": {
-        "start_date": "2025-06-02T14:52:45.249511",
-        "end_date": "2025-07-02T14:52:45.249511"
+        "start_date": "2025-06-04T13:26:00.629390",
+        "end_date": "2025-07-04T13:26:00.629392"
       },
       "partner_merchants": [
-        "Zomato",
-        "Flipkart"
+        "Amazon"
       ],
       "targeting_rules": {
-        "user_spending_threshold": 3000,
+        "user_spending_threshold": 1170,
         "preferred_categories": [
           "dining"
         ],
@@ -315,40 +312,38 @@
         "cashback",
         "discount"
       ],
-      "created_at": "2025-06-02T14:52:45.249514",
-      "updated_at": "2025-06-02T14:52:45.249515",
-      "expiry_date": "2025-07-02T14:52:45.249515",
+      "created_at": "2025-06-04T13:26:00.629396",
+      "updated_at": "2025-06-04T13:26:00.629397",
+      "expiry_date": "2025-07-04T13:26:00.629398",
       "compatible_user_profiles": [
         "young_professionals"
       ],
       "prerequisites": []
     },
     {
-      "offer_id": "a4cd109d-dbde-483d-9350-da82f1d1cb2b",
+      "offer_id": "2d1f183a-f9df-4d28-b8c3-a320d513a7d9",
       "name": "Super Saver Offer",
-      "description": "Get 10% cashback on dining with a minimum spend of \u20b91000 at Zomato and Flipkart.",
-      "type": "reward points",
+      "description": "Get 20% cashback on electronics with a minimum spend of \u20b9925 at Swiggy.",
+      "type": "cashback",
       "applicable_categories": [
-        "dining",
         "electronics"
       ],
-      "minimum_transaction_amount": 1000,
+      "minimum_transaction_amount": 925,
       "discount_value": {
         "type": "percent",
-        "value": 10
+        "value": 20
       },
       "validity_period": {
-        "start_date": "2025-06-02T14:52:45.249519",
-        "end_date": "2025-07-02T14:52:45.249520"
+        "start_date": "2025-06-04T13:26:00.629406",
+        "end_date": "2025-07-04T13:26:00.629407"
       },
       "partner_merchants": [
-        "Zomato",
-        "Flipkart"
+        "Swiggy"
       ],
       "targeting_rules": {
-        "user_spending_threshold": 3000,
+        "user_spending_threshold": 1850,
         "preferred_categories": [
-          "dining"
+          "electronics"
         ],
         "risk_profile": "low"
       },
@@ -361,40 +356,38 @@
         "cashback",
         "discount"
       ],
-      "created_at": "2025-06-02T14:52:45.249521",
-      "updated_at": "2025-06-02T14:52:45.249522",
-      "expiry_date": "2025-07-02T14:52:45.249523",
+      "created_at": "2025-06-04T13:26:00.629409",
+      "updated_at": "2025-06-04T13:26:00.629410",
+      "expiry_date": "2025-07-04T13:26:00.629411",
       "compatible_user_profiles": [
         "young_professionals"
       ],
       "prerequisites": []
     },
     {
-      "offer_id": "c66f56c0-82e0-42fb-b3d9-35fb82603054",
+      "offer_id": "01c06505-3754-490d-b722-08b0ca08cd0e",
       "name": "Super Saver Offer",
-      "description": "Get 10% cashback on dining with a minimum spend of \u20b91000 at Zomato and Flipkart.",
+      "description": "Get 16% cashback on electronics with a minimum spend of \u20b9683 at Flipkart.",
       "type": "cashback",
       "applicable_categories": [
-        "dining",
         "electronics"
       ],
-      "minimum_transaction_amount": 1000,
+      "minimum_transaction_amount": 683,
       "discount_value": {
         "type": "percent",
-        "value": 10
+        "value": 16
       },
       "validity_period": {
-        "start_date": "2025-06-02T14:52:45.249526",
-        "end_date": "2025-07-02T14:52:45.249527"
+        "start_date": "2025-06-04T13:26:00.629418",
+        "end_date": "2025-07-04T13:26:00.629419"
       },
       "partner_merchants": [
-        "Zomato",
         "Flipkart"
       ],
       "targeting_rules": {
-        "user_spending_threshold": 3000,
+        "user_spending_threshold": 1366,
         "preferred_categories": [
-          "dining"
+          "electronics"
         ],
         "risk_profile": "low"
       },
@@ -407,9 +400,9 @@
         "cashback",
         "discount"
       ],
-      "created_at": "2025-06-02T14:52:45.249528",
-      "updated_at": "2025-06-02T14:52:45.249529",
-      "expiry_date": "2025-07-02T14:52:45.249530",
+      "created_at": "2025-06-04T13:26:00.629421",
+      "updated_at": "2025-06-04T13:26:00.629422",
+      "expiry_date": "2025-07-04T13:26:00.629423",
       "compatible_user_profiles": [
         "young_professionals"
       ],
@@ -418,68 +411,19 @@
   ],
   "financial_assets": [
     {
-      "asset_id": "779e4cea-e3ea-47c0-9f86-7284f630187c",
-      "type": "mutual fund",
-      "name": "HDFC Balanced Advantage Fund",
-      "issuer": "HDFC",
-      "risk_rating": 5,
-      "expected_return": 13.82,
-      "liquidity": "medium",
-      "minimum_investment_amount": 5000,
-      "tenure": "5 years",
-      "financial_details": {
-        "historical_performance": {
-          "2022": "12.3%",
-          "2023": "10.5%"
-        },
-        "tax_implications": {
-          "short_term": "15%",
-          "long_term": "10% after 1 year"
-        },
-        "key_features": [
-          "dividend-paying",
-          "tax-saving"
-        ]
-      },
-      "metadata": {
-        "regulatory_documents": [
-          "https://example.com/prospectus.pdf"
-        ],
-        "tags": [
-          "ESG",
-          "high-growth"
-        ]
-      },
-      "keywords": [
-        "investment",
-        "mutual fund",
-        "HDFC"
-      ],
-      "created_at": "2025-06-02T14:52:45.249535",
-      "updated_at": "2025-06-02T14:52:45.249536",
-      "expiry_date": "",
-      "compatible_user_profiles": [
-        "investors",
-        "retirees"
-      ],
-      "prerequisites": [
-        "Demat account"
-      ]
-    },
-    {
-      "asset_id": "d32bc6cf-8107-482b-b9b1-c6b5e83d8ea1",
+      "asset_id": "2022538f-1760-4451-a68f-73abb7d448bc",
       "type": "mutual fund",
       "name": "HDFC Balanced Advantage Fund",
       "issuer": "HDFC",
       "risk_rating": 3,
-      "expected_return": 7.71,
+      "expected_return": 11.65,
       "liquidity": "medium",
-      "minimum_investment_amount": 5000,
+      "minimum_investment_amount": 8124,
       "tenure": "5 years",
       "financial_details": {
         "historical_performance": {
-          "2022": "12.3%",
-          "2023": "10.5%"
+          "2022": "9.7%",
+          "2023": "10.7%"
         },
         "tax_implications": {
           "short_term": "15%",
@@ -504,8 +448,8 @@
         "mutual fund",
         "HDFC"
       ],
-      "created_at": "2025-06-02T14:52:45.249541",
-      "updated_at": "2025-06-02T14:52:45.249541",
+      "created_at": "2025-06-04T13:26:00.629435",
+      "updated_at": "2025-06-04T13:26:00.629436",
       "expiry_date": "",
       "compatible_user_profiles": [
         "investors",
@@ -516,19 +460,68 @@
       ]
     },
     {
-      "asset_id": "bd2e8dad-29cf-47c2-beb1-dfd3798745f6",
-      "type": "bond",
-      "name": "HDFC Balanced Advantage Fund",
-      "issuer": "HDFC",
+      "asset_id": "3b78d816-cac0-42e7-8f83-d769c23d2bf2",
+      "type": "FD",
+      "name": "SBI Fixed Deposit",
+      "issuer": "SBI",
       "risk_rating": 1,
-      "expected_return": 6.95,
-      "liquidity": "medium",
-      "minimum_investment_amount": 5000,
+      "expected_return": 6.89,
+      "liquidity": "low",
+      "minimum_investment_amount": 40981,
       "tenure": "5 years",
       "financial_details": {
         "historical_performance": {
-          "2022": "12.3%",
-          "2023": "10.5%"
+          "2022": "4.9%",
+          "2023": "5.9%"
+        },
+        "tax_implications": {
+          "short_term": "15%",
+          "long_term": "10% after 1 year"
+        },
+        "key_features": [
+          "dividend-paying",
+          "tax-saving"
+        ]
+      },
+      "metadata": {
+        "regulatory_documents": [
+          "https://example.com/prospectus.pdf"
+        ],
+        "tags": [
+          "ESG",
+          "high-growth"
+        ]
+      },
+      "keywords": [
+        "investment",
+        "FD",
+        "SBI"
+      ],
+      "created_at": "2025-06-04T13:26:00.629444",
+      "updated_at": "2025-06-04T13:26:00.629445",
+      "expiry_date": "",
+      "compatible_user_profiles": [
+        "investors",
+        "retirees"
+      ],
+      "prerequisites": [
+        "Demat account"
+      ]
+    },
+    {
+      "asset_id": "29d6de79-0a6e-4dcd-81b6-3190dd1d65b1",
+      "type": "mutual fund",
+      "name": "ICICI Prudential Technology Fund",
+      "issuer": "ICICI",
+      "risk_rating": 5,
+      "expected_return": 14.0,
+      "liquidity": "medium",
+      "minimum_investment_amount": 10791,
+      "tenure": "5 years",
+      "financial_details": {
+        "historical_performance": {
+          "2022": "12.0%",
+          "2023": "13.0%"
         },
         "tax_implications": {
           "short_term": "15%",
@@ -551,10 +544,10 @@
       "keywords": [
         "investment",
         "mutual fund",
-        "HDFC"
+        "ICICI"
       ],
-      "created_at": "2025-06-02T14:52:45.249546",
-      "updated_at": "2025-06-02T14:52:45.249547",
+      "created_at": "2025-06-04T13:26:00.629452",
+      "updated_at": "2025-06-04T13:26:00.629453",
       "expiry_date": "",
       "compatible_user_profiles": [
         "investors",
@@ -567,19 +560,19 @@
   ],
   "investment_strategies": [
     {
-      "strategy_id": "e346bf48-7385-423a-86c2-f67617e5238b",
-      "name": "Conservative Retirement Plan",
-      "risk_profile": "conservative",
-      "time_horizon": "long-term",
-      "target_annual_return": 8.0,
+      "strategy_id": "c3bb0292-4414-4802-8205-b75f4d1e084a",
+      "name": "Balanced Income Portfolio",
+      "risk_profile": "moderate",
+      "time_horizon": "medium-term",
+      "target_annual_return": 10.0,
       "allocation_blueprint": {
-        "FD": 40,
-        "mutual_funds": 40,
-        "bonds": 20
+        "mutual_funds": 50,
+        "FD": 30,
+        "equities": 20
       },
       "performance_metrics": {
-        "backtested_results": "7.8% CAGR over 10 years",
-        "volatility_score": 1.9,
+        "backtested_results": "9.8% CAGR over 10 years",
+        "volatility_score": 2.2,
         "tax_efficiency_rating": "high"
       },
       "user_requirements": {
@@ -590,16 +583,16 @@
         ]
       },
       "keywords": [
-        "retirement",
-        "low-risk",
+        "investment",
+        "moderate",
         "strategy"
       ],
-      "created_at": "2025-06-02T14:52:45.249550",
-      "updated_at": "2025-06-02T14:52:45.249551",
+      "created_at": "2025-06-04T13:26:00.629464",
+      "updated_at": "2025-06-04T13:26:00.629465",
       "expiry_date": "",
       "compatible_user_profiles": [
-        "retirees",
-        "risk_averse"
+        "investors",
+        "retirees"
       ],
       "prerequisites": [
         "KYC",
@@ -607,18 +600,18 @@
       ]
     },
     {
-      "strategy_id": "812f03b1-e78b-455b-93b9-844d1d90b021",
+      "strategy_id": "7b06fa76-c71c-4553-98bc-134d073447b2",
       "name": "Conservative Retirement Plan",
       "risk_profile": "conservative",
       "time_horizon": "long-term",
-      "target_annual_return": 8.0,
+      "target_annual_return": 7.6,
       "allocation_blueprint": {
         "FD": 40,
         "mutual_funds": 40,
         "bonds": 20
       },
       "performance_metrics": {
-        "backtested_results": "7.8% CAGR over 10 years",
+        "backtested_results": "7.4% CAGR over 10 years",
         "volatility_score": 1.9,
         "tax_efficiency_rating": "high"
       },
@@ -630,16 +623,16 @@
         ]
       },
       "keywords": [
-        "retirement",
-        "low-risk",
+        "investment",
+        "conservative",
         "strategy"
       ],
-      "created_at": "2025-06-02T14:52:45.249554",
-      "updated_at": "2025-06-02T14:52:45.249555",
+      "created_at": "2025-06-04T13:26:00.629471",
+      "updated_at": "2025-06-04T13:26:00.629472",
       "expiry_date": "",
       "compatible_user_profiles": [
-        "retirees",
-        "risk_averse"
+        "investors",
+        "retirees"
       ],
       "prerequisites": [
         "KYC",
@@ -647,19 +640,19 @@
       ]
     },
     {
-      "strategy_id": "644c7cd9-9356-4210-afaf-530cecc74efd",
-      "name": "Conservative Retirement Plan",
-      "risk_profile": "conservative",
-      "time_horizon": "long-term",
-      "target_annual_return": 8.0,
+      "strategy_id": "7ef3ad1c-fdb0-45b2-9d8c-79dc9754cf60",
+      "name": "Balanced Income Portfolio",
+      "risk_profile": "moderate",
+      "time_horizon": "medium-term",
+      "target_annual_return": 9.0,
       "allocation_blueprint": {
-        "FD": 40,
-        "mutual_funds": 40,
-        "bonds": 20
+        "mutual_funds": 50,
+        "FD": 30,
+        "equities": 20
       },
       "performance_metrics": {
-        "backtested_results": "7.8% CAGR over 10 years",
-        "volatility_score": 1.9,
+        "backtested_results": "8.8% CAGR over 10 years",
+        "volatility_score": 2.1,
         "tax_efficiency_rating": "high"
       },
       "user_requirements": {
@@ -670,16 +663,16 @@
         ]
       },
       "keywords": [
-        "retirement",
-        "low-risk",
+        "investment",
+        "moderate",
         "strategy"
       ],
-      "created_at": "2025-06-02T14:52:45.249557",
-      "updated_at": "2025-06-02T14:52:45.249558",
+      "created_at": "2025-06-04T13:26:00.629478",
+      "updated_at": "2025-06-04T13:26:00.629479",
       "expiry_date": "",
       "compatible_user_profiles": [
-        "retirees",
-        "risk_averse"
+        "investors",
+        "retirees"
       ],
       "prerequisites": [
         "KYC",
